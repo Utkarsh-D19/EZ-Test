@@ -13,13 +13,13 @@ function App() {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.phone || !form.message) {
-      setResponseMsg("⚠️ Please fill all fields.");
+      setResponseMsg(" Please fill all fields.");
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(form.email)) {
-      setResponseMsg("⚠️ Invalid email address.");
+      setResponseMsg("Invalid email address.");
       return;
     }
 
@@ -27,11 +27,11 @@ function App() {
       const res = await axios.post("http://localhost:5000/api/contact-us", form);
 
       if (res.status === 200) {
-        setResponseMsg("✅ Form Submitted Successfully!");
+        setResponseMsg("Form Submitted Successfully!");
         setForm({ name: "", email: "", phone: "", message: "" });
       }
     } catch (err) {
-      setResponseMsg("❌ Submission failed, try again.");
+      setResponseMsg("Submission failed, try again.");
     }
   };
 
